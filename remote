@@ -24,8 +24,10 @@ public class remote extends javax.swing.JFrame {
     /**
      * Creates new form remote
      */
+    String Rip;
     public remote() {
         initComponents();
+        
     }
 
     /**
@@ -42,6 +44,8 @@ public class remote extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,25 +94,38 @@ public class remote extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setText("connection");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton3)
+                                .addGap(34, 34, 34)
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(jButton4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(110, 110, 110)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton2)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(34, 34, 34)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton4)))
+                        .addGap(77, 77, 77)
+                        .addComponent(jButton6)
+                        .addGap(33, 33, 33)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -124,7 +141,11 @@ public class remote extends javax.swing.JFrame {
                         .addComponent(jButton4)))
                 .addGap(27, 27, 27)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
@@ -141,7 +162,7 @@ public class remote extends javax.swing.JFrame {
             BufferedReader inFromUser =
             new BufferedReader(new InputStreamReader(System.in));
             DatagramSocket clientSocket = new DatagramSocket();
-            InetAddress IPAddress = InetAddress.getByName("192.168.7.101");//ip adress of raspberry Pi
+            InetAddress IPAddress = InetAddress.getByName(Rip);//ip adress of raspberry Pi
             byte[] sendData = new byte[1024];
             //byte[] receiveData = new byte[1024];
             String sentence = "r";//inFromUser.readLine();
@@ -165,7 +186,7 @@ public class remote extends javax.swing.JFrame {
             BufferedReader inFromUser =
             new BufferedReader(new InputStreamReader(System.in));
             DatagramSocket clientSocket = new DatagramSocket();
-            InetAddress IPAddress = InetAddress.getByName("192.168.7.101");//ip adress of raspberry Pi
+            InetAddress IPAddress = InetAddress.getByName(Rip);//ip adress of raspberry Pi
             byte[] sendData = new byte[1024];
             //byte[] receiveData = new byte[1024];
             String sentence = "i";//inFromUser.readLine();
@@ -189,7 +210,7 @@ public class remote extends javax.swing.JFrame {
             BufferedReader inFromUser =
             new BufferedReader(new InputStreamReader(System.in));
             DatagramSocket clientSocket = new DatagramSocket();
-            InetAddress IPAddress = InetAddress.getByName("192.168.7.101");//ip adress of raspberry Pi
+            InetAddress IPAddress = InetAddress.getByName(Rip);//ip adress of raspberry Pi
             byte[] sendData = new byte[1024];
             //byte[] receiveData = new byte[1024];
             String sentence = "s";//inFromUser.readLine();
@@ -213,7 +234,7 @@ public class remote extends javax.swing.JFrame {
             BufferedReader inFromUser =
             new BufferedReader(new InputStreamReader(System.in));
             DatagramSocket clientSocket = new DatagramSocket();
-            InetAddress IPAddress = InetAddress.getByName("192.168.7.101");//ip adress of raspberry Pi
+            InetAddress IPAddress = InetAddress.getByName(Rip);//ip adress of raspberry Pi
             byte[] sendData = new byte[1024];
             //byte[] receiveData = new byte[1024];
             String sentence = "b";//inFromUser.readLine();
@@ -237,7 +258,7 @@ public class remote extends javax.swing.JFrame {
             BufferedReader inFromUser =
             new BufferedReader(new InputStreamReader(System.in));
             DatagramSocket clientSocket = new DatagramSocket();
-            InetAddress IPAddress = InetAddress.getByName("192.168.7.101");//ip adress of raspberry Pi
+            InetAddress IPAddress = InetAddress.getByName(Rip);//ip adress of raspberry Pi
             byte[] sendData = new byte[1024];
             //byte[] receiveData = new byte[1024];
             String sentence = "l";//inFromUser.readLine();
@@ -252,6 +273,12 @@ public class remote extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(remote.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }                                     
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {                                      
+        // TODO add your handling code here:
+        Rip=jTextField1.getText();
+        
     }                                     
 
     /**
@@ -294,5 +321,7 @@ public class remote extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration                   
 }
